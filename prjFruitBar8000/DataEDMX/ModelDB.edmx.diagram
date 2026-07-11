@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fdc8bc21a68f45708624a70fb0687158" Name="Diagram1">
+        <EntityTypeShape EntityType="FruitBarDBModel.AlbumArtist" Width="1.5" PointX="3" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FruitBarDBModel.Album" Width="1.5" PointX="0.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FruitBarDBModel.Artist" Width="1.5" PointX="0.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="FruitBarDBModel.ArtistsSong" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="FruitBarDBModel.Genre" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="FruitBarDBModel.SongGenre" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="FruitBarDBModel.Song" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FruitBarDBModel.SongsAlbum" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
+        <AssociationConnector Association="FruitBarDBModel.FK_AlbumArtist_Albums" ManuallyRouted="false" />
+        <AssociationConnector Association="FruitBarDBModel.FK_AlbumArtist_Artists" ManuallyRouted="false" />
+        <AssociationConnector Association="FruitBarDBModel.FK_SongsAlbums_Albums" ManuallyRouted="false" />
+        <AssociationConnector Association="FruitBarDBModel.FK_ArtistsSongs_Artists" ManuallyRouted="false" />
+        <AssociationConnector Association="FruitBarDBModel.FK_ArtistsSongs_Songs" ManuallyRouted="false" />
+        <AssociationConnector Association="FruitBarDBModel.FK_SongGenres_Genre" ManuallyRouted="false" />
+        <AssociationConnector Association="FruitBarDBModel.FK_SongGenres_Songs" ManuallyRouted="false" />
+        <AssociationConnector Association="FruitBarDBModel.FK_SongsAlbums_Songs" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
