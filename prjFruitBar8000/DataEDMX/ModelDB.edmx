@@ -12,6 +12,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="AlbumId" Type="int" Nullable="false" />
           <Property Name="ArtistId" Type="int" Nullable="false" />
+          <Property Name="CreditRoles" Type="nvarchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="Albums">
           <Key>
@@ -22,6 +23,7 @@
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
           <Property Name="ReleaseDate" Type="date" />
           <Property Name="CoverPic" Type="varbinary(max)" />
+          <Property Name="AlbumType" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Artists">
           <Key>
@@ -30,7 +32,6 @@
           <Property Name="ArtistId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ArtistName" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
-          <Property Name="ArtistRole" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="ArtistsSongs">
           <Key>
@@ -39,6 +40,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="SongId" Type="int" Nullable="false" />
           <Property Name="ArtistId" Type="int" Nullable="false" />
+          <Property Name="CreditRoles" Type="nvarchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="Genre">
           <Key>
@@ -226,6 +228,7 @@
           <Property Name="ArtistId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Album" Relationship="Self.FK_AlbumArtist_Albums" FromRole="AlbumArtist" ToRole="Albums" />
           <NavigationProperty Name="Artist" Relationship="Self.FK_AlbumArtist_Artists" FromRole="AlbumArtist" ToRole="Artists" />
+          <Property Name="CreditRoles" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Album">
           <Key>
@@ -238,6 +241,7 @@
           <NavigationProperty Name="SongsAlbums" Relationship="Self.FK_SongsAlbums_Albums" FromRole="Albums" ToRole="SongsAlbums" />
           <Property Name="ReleaseDate" Type="DateTime" Precision="0" />
           <Property Name="CoverPic" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="AlbumType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Artist">
           <Key>
@@ -248,7 +252,6 @@
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="AlbumArtists" Relationship="Self.FK_AlbumArtist_Artists" FromRole="Artists" ToRole="AlbumArtist" />
           <NavigationProperty Name="ArtistsSongs" Relationship="Self.FK_ArtistsSongs_Artists" FromRole="Artists" ToRole="ArtistsSongs" />
-          <Property Name="ArtistRole" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="ArtistsSong">
           <Key>
@@ -259,6 +262,7 @@
           <Property Name="ArtistId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Artist" Relationship="Self.FK_ArtistsSongs_Artists" FromRole="ArtistsSongs" ToRole="Artists" />
           <NavigationProperty Name="Song" Relationship="Self.FK_ArtistsSongs_Songs" FromRole="ArtistsSongs" ToRole="Songs" />
+          <Property Name="CreditRoles" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Genre">
           <Key>
@@ -450,6 +454,7 @@
           <EntitySetMapping Name="AlbumArtists">
             <EntityTypeMapping TypeName="FruitBarDBModel.AlbumArtist">
               <MappingFragment StoreEntitySet="AlbumArtist">
+                <ScalarProperty Name="CreditRoles" ColumnName="CreditRoles" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="AlbumId" ColumnName="AlbumId" />
                 <ScalarProperty Name="ArtistId" ColumnName="ArtistId" />
@@ -459,6 +464,7 @@
           <EntitySetMapping Name="Albums">
             <EntityTypeMapping TypeName="FruitBarDBModel.Album">
               <MappingFragment StoreEntitySet="Albums">
+                <ScalarProperty Name="AlbumType" ColumnName="AlbumType" />
                 <ScalarProperty Name="CoverPic" ColumnName="CoverPic" />
                 <ScalarProperty Name="ReleaseDate" ColumnName="ReleaseDate" />
                 <ScalarProperty Name="AlbumId" ColumnName="AlbumId" />
@@ -470,7 +476,6 @@
           <EntitySetMapping Name="Artists">
             <EntityTypeMapping TypeName="FruitBarDBModel.Artist">
               <MappingFragment StoreEntitySet="Artists">
-                <ScalarProperty Name="ArtistRole" ColumnName="ArtistRole" />
                 <ScalarProperty Name="ArtistId" ColumnName="ArtistId" />
                 <ScalarProperty Name="ArtistName" ColumnName="ArtistName" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
@@ -480,6 +485,7 @@
           <EntitySetMapping Name="ArtistsSongs">
             <EntityTypeMapping TypeName="FruitBarDBModel.ArtistsSong">
               <MappingFragment StoreEntitySet="ArtistsSongs">
+                <ScalarProperty Name="CreditRoles" ColumnName="CreditRoles" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="SongId" ColumnName="SongId" />
                 <ScalarProperty Name="ArtistId" ColumnName="ArtistId" />

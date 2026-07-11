@@ -26,6 +26,7 @@ namespace prjFruitBar8000.DataEDMX
         public bool IsDeleted { get; set; }
         public Nullable<System.DateTime> ReleaseDate { get; set; }
         public byte[] CoverPic { get; set; }
+        public string AlbumType { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AlbumArtist> AlbumArtists { get; set; }

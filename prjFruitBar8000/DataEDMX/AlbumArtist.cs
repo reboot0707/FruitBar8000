@@ -17,6 +17,7 @@ namespace prjFruitBar8000.DataEDMX
         public int Id { get; set; }
         public int AlbumId { get; set; }
         public int ArtistId { get; set; }
+        public string CreditRoles { get; set; }
     
         public virtual Album Album { get; set; }
         public virtual Artist Artist { get; set; }
