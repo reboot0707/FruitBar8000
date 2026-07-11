@@ -16,10 +16,25 @@ namespace prjFruitBar8000
         {
             InitializeComponent();
         }
-
-        private void buttonStart_Click(object sender, EventArgs e)
+        private void btnAlbums_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Yokoso! FruitBar8000 Media Player!");
+            MessageBox.Show("Searching Albums...");
         }
+
+        private void btnSongs_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Searching Songs...");
+        }
+
+        private void btnArtist_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Searching Artists...");
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
     }
 }

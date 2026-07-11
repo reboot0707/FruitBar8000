@@ -32,7 +32,10 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.buttonStart = new System.Windows.Forms.Button();
+            this.btnSongs = new System.Windows.Forms.Button();
+            this.btnAlbums = new System.Windows.Forms.Button();
+            this.btnArtist = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -73,11 +76,15 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.Controls.Add(this.buttonStart, 1, 1);
+            this.tableLayoutPanel1.ColumnCount = 4;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.Controls.Add(this.btnSongs, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.btnAlbums, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.btnArtist, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.btnExit, 3, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -88,17 +95,53 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1006, 108);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // buttonStart
+            // btnSongs
             // 
-            this.buttonStart.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonStart.Font = new System.Drawing.Font("Microsoft JhengHei", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonStart.Location = new System.Drawing.Point(338, 24);
-            this.buttonStart.Name = "buttonStart";
-            this.buttonStart.Size = new System.Drawing.Size(329, 58);
-            this.buttonStart.TabIndex = 0;
-            this.buttonStart.Text = "Start!";
-            this.buttonStart.UseVisualStyleBackColor = true;
-            this.buttonStart.Click += new System.EventHandler(this.buttonStart_Click);
+            this.btnSongs.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnSongs.Font = new System.Drawing.Font("Microsoft JhengHei", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSongs.Location = new System.Drawing.Point(254, 24);
+            this.btnSongs.Name = "btnSongs";
+            this.btnSongs.Size = new System.Drawing.Size(245, 58);
+            this.btnSongs.TabIndex = 0;
+            this.btnSongs.Text = "&Songs";
+            this.btnSongs.UseVisualStyleBackColor = true;
+            this.btnSongs.Click += new System.EventHandler(this.btnSongs_Click);
+            // 
+            // btnAlbums
+            // 
+            this.btnAlbums.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnAlbums.Font = new System.Drawing.Font("Microsoft JhengHei", 18F);
+            this.btnAlbums.Location = new System.Drawing.Point(3, 24);
+            this.btnAlbums.Name = "btnAlbums";
+            this.btnAlbums.Size = new System.Drawing.Size(245, 58);
+            this.btnAlbums.TabIndex = 1;
+            this.btnAlbums.Text = "&Albums";
+            this.btnAlbums.UseVisualStyleBackColor = true;
+            this.btnAlbums.Click += new System.EventHandler(this.btnAlbums_Click);
+            // 
+            // btnArtist
+            // 
+            this.btnArtist.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnArtist.Font = new System.Drawing.Font("Microsoft JhengHei", 18F);
+            this.btnArtist.Location = new System.Drawing.Point(505, 24);
+            this.btnArtist.Name = "btnArtist";
+            this.btnArtist.Size = new System.Drawing.Size(245, 58);
+            this.btnArtist.TabIndex = 2;
+            this.btnArtist.Text = "A&rtist";
+            this.btnArtist.UseVisualStyleBackColor = true;
+            this.btnArtist.Click += new System.EventHandler(this.btnArtist_Click);
+            // 
+            // btnExit
+            // 
+            this.btnExit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnExit.Font = new System.Drawing.Font("Microsoft JhengHei", 18F);
+            this.btnExit.Location = new System.Drawing.Point(756, 24);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(247, 58);
+            this.btnExit.TabIndex = 3;
+            this.btnExit.Text = "&Exit";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // MainPage
             // 
@@ -123,7 +166,10 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Button buttonStart;
+        private System.Windows.Forms.Button btnSongs;
+        private System.Windows.Forms.Button btnAlbums;
+        private System.Windows.Forms.Button btnArtist;
+        private System.Windows.Forms.Button btnExit;
     }
 }
 
