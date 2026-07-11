@@ -30,6 +30,7 @@
           <Property Name="ArtistId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ArtistName" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="ArtistRole" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="ArtistsSongs">
           <Key>
@@ -247,6 +248,7 @@
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="AlbumArtists" Relationship="Self.FK_AlbumArtist_Artists" FromRole="Artists" ToRole="AlbumArtist" />
           <NavigationProperty Name="ArtistsSongs" Relationship="Self.FK_ArtistsSongs_Artists" FromRole="Artists" ToRole="ArtistsSongs" />
+          <Property Name="ArtistRole" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="ArtistsSong">
           <Key>
@@ -468,6 +470,7 @@
           <EntitySetMapping Name="Artists">
             <EntityTypeMapping TypeName="FruitBarDBModel.Artist">
               <MappingFragment StoreEntitySet="Artists">
+                <ScalarProperty Name="ArtistRole" ColumnName="ArtistRole" />
                 <ScalarProperty Name="ArtistId" ColumnName="ArtistId" />
                 <ScalarProperty Name="ArtistName" ColumnName="ArtistName" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
