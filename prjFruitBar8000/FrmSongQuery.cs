@@ -58,7 +58,7 @@ namespace prjFruitBar8000
                 keyword = "";
             }
 
-            List<SongQueryResult> qParseList = new SongQueryService().QuerySongs(keyword);
+            List<SongQueryResult> qParseList = new SongQueryService().querySongs(keyword);
 
             dgvSongList.DataSource = qParseList.ToList();
             dgvSongList.Columns["SongName"].HeaderText = "歌曲名稱";
