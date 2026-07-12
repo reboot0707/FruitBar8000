@@ -98,6 +98,12 @@
       <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ErrorLogger.cs" />
+    <Compile Include="FrmAddNewSongs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAddNewSongs.Designer.cs">
+      <DependentUpon>FrmAddNewSongs.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmSongQuery.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,6 +119,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\SongQueryService.cs" />
+    <EmbeddedResource Include="FrmAddNewSongs.resx">
+      <DependentUpon>FrmAddNewSongs.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmSongQuery.resx">
       <DependentUpon>FrmSongQuery.cs</DependentUpon>
     </EmbeddedResource>
