@@ -8,13 +8,6 @@ using System.Threading.Tasks;
 
 namespace prjFruitBar8000.Services
 {
-    public class SongQueryResult
-    {
-        public string SongName { get; set; }
-        public string AlbumName { get; set; }
-        public string ArtistNames { get; set; }
-    }
-
     public class SongQueryService
     {
         public List<SongQueryResult> querySongs(string inputKeyword)
@@ -88,13 +81,6 @@ namespace prjFruitBar8000.Services
             }
         }
 
-        private class SongQueryRow
-        {
-            public string SongName { get; set; }
-            public string AlbumName { get; set; }
-            public string ArtistNameEach { get; set; }
-        }
-
         private List<SongQueryResult> buildResults(List<SongQueryRow> rows)
         {
             return  rows
@@ -106,5 +92,21 @@ namespace prjFruitBar8000.Services
                         ArtistNames = string.Join("; ", g.Select(y => y.ArtistNameEach))
                     }).ToList();
         }
+
+        
+        // TODO 釐清這個巢狀型別的必要性, 確認有無更好的實作方法
+        private class SongQueryRow
+        {
+            public string SongName { get; set; }
+            public string AlbumName { get; set; }
+            public string ArtistNameEach { get; set; }
+        }
+    }
+
+    public class SongQueryResult
+    {
+        public string SongName { get; set; }
+        public string AlbumName { get; set; }
+        public string ArtistNames { get; set; }
     }
 }
