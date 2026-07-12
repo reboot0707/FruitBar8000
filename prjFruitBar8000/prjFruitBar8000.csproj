@@ -118,6 +118,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\SongAddService.cs" />
     <Compile Include="Services\SongQueryService.cs" />
     <EmbeddedResource Include="FrmAddNewSongs.resx">
       <DependentUpon>FrmAddNewSongs.cs</DependentUpon>

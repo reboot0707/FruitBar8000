@@ -18,7 +18,6 @@ namespace prjFruitBar8000
         string defaultTextboxName = "";
         FruitBarDBEntities dbcontext = null;
 
-
         public FrmSongQuery()
         {
             InitializeComponent();
@@ -48,6 +47,7 @@ namespace prjFruitBar8000
             catch (Exception ex)
             {
                 ErrorLogger.Show(ex);
+                MessageBox.Show("發生錯誤! 請洽管理員");
             }
         }
 
