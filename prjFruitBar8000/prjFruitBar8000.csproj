@@ -104,6 +104,12 @@
     <Compile Include="FrmAddNewSongs.Designer.cs">
       <DependentUpon>FrmAddNewSongs.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmSongMgmt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSongMgmt.Designer.cs">
+      <DependentUpon>FrmSongMgmt.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmSongQuery.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,6 +128,9 @@
     <Compile Include="Services\SongQueryService.cs" />
     <EmbeddedResource Include="FrmAddNewSongs.resx">
       <DependentUpon>FrmAddNewSongs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSongMgmt.resx">
+      <DependentUpon>FrmSongMgmt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmSongQuery.resx">
       <DependentUpon>FrmSongQuery.cs</DependentUpon>

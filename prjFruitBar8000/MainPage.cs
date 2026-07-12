@@ -20,15 +20,15 @@ namespace prjFruitBar8000
         private void btnQuerySongs_Click(object sender, EventArgs e)
         {
             //MessageBox.Show("Searching Songs...");
-            new FrmSongQuery().Show();
+            (new FrmSongQuery()).Show();
         }
         private void btnAddSongs_Click(object sender, EventArgs e)
         {
-            new FrmAddNewSongs().Show();
+            (new FrmAddNewSongs()).Show();
         }
         private void btnMgmtSongs_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Going to Songs Management...");
+            (new FrmSongMgmt()).Show();
         }
 
         private void btnExit_Click(object sender, EventArgs e)
