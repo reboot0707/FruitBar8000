@@ -23,6 +23,7 @@ namespace prjFruitBar8000.Services
                 var qRawList = query.SelectMany(a => a.Song.ArtistsSongs,
                                                (x, a) => new SongQueryRow
                                                {
+                                                   SongId = a.SongId,
                                                    SongName = a.Song.SongName,
                                                    AlbumName = x.Album.AlbumName,
                                                    ArtistNameEach = a.Artist.ArtistName
@@ -46,6 +47,7 @@ namespace prjFruitBar8000.Services
                 var qRawList = query.SelectMany(a => a.Song.ArtistsSongs,
                                                (x, a) => new SongQueryRow
                                                {
+                                                   SongId = a.SongId,
                                                    SongName = a.Song.SongName,
                                                    AlbumName = x.Album.AlbumName,
                                                    ArtistNameEach = a.Artist.ArtistName
@@ -71,6 +73,7 @@ namespace prjFruitBar8000.Services
                 var qRawList = query.SelectMany(a => a.Song.ArtistsSongs,
                                         (x, a) => new SongQueryRow
                                         {
+                                            SongId = a.SongId,
                                             SongName = a.Song.SongName,
                                             AlbumName = x.Album.AlbumName,
                                             ArtistNameEach = a.Artist.ArtistName
@@ -84,10 +87,11 @@ namespace prjFruitBar8000.Services
         private List<SongQueryResult> buildResults(List<SongQueryRow> rows)
         {
             return  rows
-                    .GroupBy(x => new { x.SongName, x.AlbumName })
+                    .GroupBy(x => new { x.SongId, x.AlbumName })
                     .Select(g => new SongQueryResult
                     {
-                        SongName = g.Key.SongName,
+                        SongId = g.Key.SongId,
+                        SongName = g.Select(x => x.SongName).FirstOrDefault(),
                         AlbumName = g.Key.AlbumName,
                         ArtistNames = string.Join("; ", g.Select(y => y.ArtistNameEach))
                     }).ToList();
@@ -97,6 +101,7 @@ namespace prjFruitBar8000.Services
         // TODO 釐清這個巢狀型別的必要性, 確認有無更好的實作方法
         private class SongQueryRow
         {
+            public int SongId { get; set; }
             public string SongName { get; set; }
             public string AlbumName { get; set; }
             public string ArtistNameEach { get; set; }
@@ -105,6 +110,7 @@ namespace prjFruitBar8000.Services
 
     public class SongQueryResult
     {
+        public int SongId { get; set; }
         public string SongName { get; set; }
         public string AlbumName { get; set; }
         public string ArtistNames { get; set; }

@@ -91,6 +91,8 @@ namespace prjFruitBar8000
             List<SongQueryResult> qParseList = queryMethod(keyword);
 
             dgvSongList.DataSource = qParseList.ToList();
+            //SongId
+            dgvSongList.Columns["SongId"].HeaderText = "歌曲ID";
             dgvSongList.Columns["SongName"].HeaderText = "歌曲名稱";
             dgvSongList.Columns["AlbumName"].HeaderText = "專輯名稱";
             dgvSongList.Columns["ArtistNames"].HeaderText = "演出／製作人員";
