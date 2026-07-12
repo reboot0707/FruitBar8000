@@ -37,8 +37,11 @@ namespace prjFruitBar8000
                         break;
 
                     case "專輯":
+                        CallQueryAlbums();
+                        break;
+
                     case "創作者":
-                        MessageBox.Show("功能正在實作中!");
+                        CallQueryArtists();
                         break;
                 }
             }
@@ -48,7 +51,34 @@ namespace prjFruitBar8000
             }
         }
 
+        private void txtSongName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            { 
+                btnQuery_Click(sender, e);
+                e.SuppressKeyPress = true;
+            }
+        }
+
         public void CallQuerySongs()
+        {
+            SongQueryService service = new SongQueryService();
+            CallQuery(service.querySongs);
+        }
+
+        public void CallQueryAlbums()
+        {
+            SongQueryService service = new SongQueryService();
+            CallQuery(service.queryAlbums);
+        }
+
+        public void CallQueryArtists()
+        {
+            SongQueryService service = new SongQueryService();
+            CallQuery(service.queryArtists);
+        }
+
+        public void CallQuery(Func<string, List<SongQueryResult>> queryMethod) //List<SongQueryResult> querySongs(string inputKeyword)
         {
             string keyword = this.txtSongName.Text.Trim();
             bool hasKeyword = keyword.Length > 0 && keyword != defaultTextboxName;
@@ -58,22 +88,13 @@ namespace prjFruitBar8000
                 keyword = "";
             }
 
-            List<SongQueryResult> qParseList = new SongQueryService().querySongs(keyword);
+            List<SongQueryResult> qParseList = queryMethod(keyword);
 
             dgvSongList.DataSource = qParseList.ToList();
             dgvSongList.Columns["SongName"].HeaderText = "歌曲名稱";
             dgvSongList.Columns["AlbumName"].HeaderText = "專輯名稱";
-            dgvSongList.Columns["ArtistName"].HeaderText = "演出／製作人員";
+            dgvSongList.Columns["ArtistNames"].HeaderText = "演出／製作人員";
             return;
-        }
-
-        private void txtSongName_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            { 
-                btnQuery_Click(sender, e);
-                e.SuppressKeyPress = true;
-            }
         }
     }
 }

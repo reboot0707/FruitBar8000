@@ -32,8 +32,8 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.txtSongName = new System.Windows.Forms.TextBox();
             this.btnQuery = new System.Windows.Forms.Button();
-            this.dgvSongList = new System.Windows.Forms.DataGridView();
             this.cbQueryType = new System.Windows.Forms.ComboBox();
+            this.dgvSongList = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -66,7 +66,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 81.375F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.625F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 22F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 23F));
             this.tableLayoutPanel1.Controls.Add(this.txtSongName, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.btnQuery, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.cbQueryType, 0, 1);
@@ -86,7 +86,7 @@
             this.txtSongName.Font = new System.Drawing.Font("微軟正黑體", 12F);
             this.txtSongName.Location = new System.Drawing.Point(103, 34);
             this.txtSongName.Name = "txtSongName";
-            this.txtSongName.Size = new System.Drawing.Size(545, 34);
+            this.txtSongName.Size = new System.Drawing.Size(544, 34);
             this.txtSongName.TabIndex = 0;
             this.txtSongName.Text = "請輸入樂曲名稱";
             this.txtSongName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSongName_KeyDown);
@@ -96,13 +96,28 @@
             this.btnQuery.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.btnQuery.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnQuery.Font = new System.Drawing.Font("微軟正黑體", 12F);
-            this.btnQuery.Location = new System.Drawing.Point(654, 35);
+            this.btnQuery.Location = new System.Drawing.Point(653, 35);
             this.btnQuery.Name = "btnQuery";
             this.btnQuery.Size = new System.Drawing.Size(120, 33);
             this.btnQuery.TabIndex = 1;
             this.btnQuery.Text = "查詢";
             this.btnQuery.UseVisualStyleBackColor = true;
             this.btnQuery.Click += new System.EventHandler(this.btnQuery_Click);
+            // 
+            // cbQueryType
+            // 
+            this.cbQueryType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbQueryType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbQueryType.Font = new System.Drawing.Font("微軟正黑體", 12F);
+            this.cbQueryType.FormattingEnabled = true;
+            this.cbQueryType.Items.AddRange(new object[] {
+            "樂曲",
+            "專輯",
+            "創作者"});
+            this.cbQueryType.Location = new System.Drawing.Point(3, 35);
+            this.cbQueryType.Name = "cbQueryType";
+            this.cbQueryType.Size = new System.Drawing.Size(94, 33);
+            this.cbQueryType.TabIndex = 2;
             // 
             // dgvSongList
             // 
@@ -115,21 +130,6 @@
             this.dgvSongList.Size = new System.Drawing.Size(800, 343);
             this.dgvSongList.TabIndex = 0;
             // 
-            // cbQueryType
-            // 
-            this.cbQueryType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbQueryType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbQueryType.Font = new System.Drawing.Font("微軟正黑體", 12F);
-            this.cbQueryType.FormattingEnabled = true;
-            this.cbQueryType.Items.AddRange(new object[] {
-            "樂曲",
-            "專輯",
-            "創作者"});
-            this.cbQueryType.Location = new System.Drawing.Point(3, 40);
-            this.cbQueryType.Name = "cbQueryType";
-            this.cbQueryType.Size = new System.Drawing.Size(94, 33);
-            this.cbQueryType.TabIndex = 2;
-            // 
             // FrmSongQuery
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -137,7 +137,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.splitContainer1);
             this.Name = "FrmSongQuery";
-            this.Text = "曲名查詢";
+            this.Text = "歌曲查詢";
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
