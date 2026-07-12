@@ -23,7 +23,8 @@ namespace prjFruitBar8000
 
         private void btnSongs_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Searching Songs...");
+            //MessageBox.Show("Searching Songs...");
+            new FrmSongQuery().Show();
         }
 
         private void btnArtist_Click(object sender, EventArgs e)
