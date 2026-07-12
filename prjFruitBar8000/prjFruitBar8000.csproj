@@ -97,6 +97,7 @@
     <Compile Include="DataEDMX\SongsAlbum.cs">
       <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="ErrorLogger.cs" />
     <Compile Include="FrmSongQuery.cs">
       <SubType>Form</SubType>
     </Compile>

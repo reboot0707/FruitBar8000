@@ -21,16 +21,76 @@ namespace prjFruitBar8000
         {
             InitializeComponent();
             defaultTextboxName = this.txtSongName.Text;
+            cbQueryType.SelectedItem = "樂曲";
         }
 
         private void btnQuery_Click(object sender, EventArgs e)
         {
+            bool flowControl = false;
+            //cbQueryType
+
+            if(cbQueryType.Text == "樂曲")
+            {
+                try
+                { 
+                    flowControl = QuerySongs(); 
+                }
+                catch(Exception ex)
+                {
+                    ErrorLogger.Log(ex);
+                    MessageBox.Show("發生錯誤, 請洽系統管理員翻閱錯誤追蹤紀錄!");
+                    return;
+                }
+            }
+
+            if (cbQueryType.Text == "專輯")
+            {
+                try
+                {
+                    //flowControl = QuerySongs();
+                    MessageBox.Show("功能正在實作中!");
+                    return;
+                }
+                catch (Exception ex)
+                {
+                    ErrorLogger.Log(ex);
+                    MessageBox.Show("發生錯誤, 請洽系統管理員翻閱錯誤追蹤紀錄!");
+                    return;
+                }
+            }
+
+            if (cbQueryType.Text == "創作者")
+            {
+                try
+                {
+                    //flowControl = QuerySongs();
+                    MessageBox.Show("功能正在實作中!");
+                    return;
+                }
+                catch (Exception ex)
+                {
+                    ErrorLogger.Log(ex);
+                    MessageBox.Show("發生錯誤, 請洽系統管理員翻閱錯誤追蹤紀錄!");
+                    return;
+                }
+            }
+
+            if (!flowControl)
+            {
+                return;
+            }
+        }
+
+        private bool QuerySongs()
+        {
             dbcontext = new FruitBarDBEntities();
-            
+
             //TODO 例外處理
             if (this.txtSongName.Text == defaultTextboxName || this.txtSongName.Text.Length == 0)
             {
-                var qRawList = dbcontext.SongsAlbums.SelectMany(
+                var qRawList = dbcontext.SongsAlbums
+                    .Where(x => !x.Song.IsDeleted)
+                    .SelectMany(
                     a => a.Song.ArtistsSongs,
                     (x, a) => new
                     {
@@ -55,13 +115,13 @@ namespace prjFruitBar8000
                 dgvSongList.Columns["SongName"].HeaderText = "歌曲名稱";
                 dgvSongList.Columns["AlbumName"].HeaderText = "專輯名稱";
                 dgvSongList.Columns["ArtistNames"].HeaderText = "演出／製作人員";
-                return;
+                return false;
             }
             else
             {
                 string strSongQuery = txtSongName.Text.Trim();
                 var qRawList = dbcontext.SongsAlbums
-                    .Where(x => x.Song.SongName.Contains(strSongQuery))
+                    .Where(x => !x.Song.IsDeleted && x.Song.SongName.Contains(strSongQuery))
                     .SelectMany(
         a => a.Song.ArtistsSongs,
         (x, a) => new
@@ -88,6 +148,8 @@ namespace prjFruitBar8000
                 dgvSongList.Columns["AlbumName"].HeaderText = "專輯名稱";
                 dgvSongList.Columns["ArtistNames"].HeaderText = "演出／製作人員";
             }
+
+            return true;
         }
 
         private void txtSongName_KeyDown(object sender, KeyEventArgs e)
