@@ -16,5 +16,14 @@ namespace prjFruitBar8000
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("確定要刪除?","警告",MessageBoxButtons.OKCancel);
+            if (result == DialogResult.Cancel)
+            {
+                return;
+            }
+        }
     }
 }
