@@ -24,6 +24,7 @@ namespace prjFruitBar8000.DataEDMX
         public int ArtistId { get; set; }
         public string ArtistName { get; set; }
         public bool IsDeleted { get; set; }
+        public string ArtistType { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AlbumArtist> AlbumArtists { get; set; }
