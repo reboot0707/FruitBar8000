@@ -60,8 +60,8 @@ namespace prjFruitBar8000
                 }
                 else
                 {
-                    throw new Exception("歌曲新增失敗!");
                     MessageBox.Show("歌曲新增失敗! 請洽管理員");
+                    throw new Exception("歌曲新增失敗!");
                 }
             }
             catch(Exception ex)
