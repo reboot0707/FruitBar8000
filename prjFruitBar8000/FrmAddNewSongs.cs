@@ -66,7 +66,7 @@ namespace prjFruitBar8000
             }
             catch(Exception ex)
             {
-                ErrorLogger.Show(ex);
+                ErrorLogger.Log(ex);
                 MessageBox.Show("發生錯誤! 請洽管理員");
             }
         }
