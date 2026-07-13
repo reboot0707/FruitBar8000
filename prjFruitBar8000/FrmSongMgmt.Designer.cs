@@ -36,8 +36,8 @@
             this.lblSongName = new System.Windows.Forms.Label();
             this.txtCreatorName = new System.Windows.Forms.TextBox();
             this.txtSongName = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnDeleteSong = new System.Windows.Forms.Button();
+            this.btnUpdateSong = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtIdBox
@@ -122,39 +122,40 @@
             this.txtSongName.Size = new System.Drawing.Size(652, 47);
             this.txtSongName.TabIndex = 9;
             // 
-            // button1
+            // btnDeleteSong
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Font = new System.Drawing.Font("微軟正黑體", 12F);
-            this.button1.Location = new System.Drawing.Point(907, 501);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(129, 48);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "刪除";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnDeleteSong.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnDeleteSong.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnDeleteSong.Font = new System.Drawing.Font("微軟正黑體", 12F);
+            this.btnDeleteSong.Location = new System.Drawing.Point(12, 503);
+            this.btnDeleteSong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnDeleteSong.Name = "btnDeleteSong";
+            this.btnDeleteSong.Size = new System.Drawing.Size(129, 48);
+            this.btnDeleteSong.TabIndex = 10;
+            this.btnDeleteSong.Text = "刪除";
+            this.btnDeleteSong.UseVisualStyleBackColor = true;
+            this.btnDeleteSong.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // btnUpdateSong
             // 
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Font = new System.Drawing.Font("微軟正黑體", 12F);
-            this.button2.Location = new System.Drawing.Point(439, 25);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(169, 40);
-            this.button2.TabIndex = 10;
-            this.button2.Text = "儲存資訊";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnUpdateSong.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnUpdateSong.Font = new System.Drawing.Font("微軟正黑體", 12F);
+            this.btnUpdateSong.Location = new System.Drawing.Point(439, 25);
+            this.btnUpdateSong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnUpdateSong.Name = "btnUpdateSong";
+            this.btnUpdateSong.Size = new System.Drawing.Size(169, 40);
+            this.btnUpdateSong.TabIndex = 10;
+            this.btnUpdateSong.Text = "儲存資訊";
+            this.btnUpdateSong.UseVisualStyleBackColor = true;
+            this.btnUpdateSong.Click += new System.EventHandler(this.btnUpdateSong_Click);
             // 
             // FrmSongMgmt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1067, 562);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnUpdateSong);
+            this.Controls.Add(this.btnDeleteSong);
             this.Controls.Add(this.txtSongName);
             this.Controls.Add(this.txtCreatorName);
             this.Controls.Add(this.txtAlbumName);
@@ -181,7 +182,7 @@
         private System.Windows.Forms.Label lblSongName;
         private System.Windows.Forms.TextBox txtCreatorName;
         private System.Windows.Forms.TextBox txtSongName;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnDeleteSong;
+        private System.Windows.Forms.Button btnUpdateSong;
     }
 }

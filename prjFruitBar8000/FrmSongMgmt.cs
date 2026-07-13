@@ -13,6 +13,8 @@ namespace prjFruitBar8000
 {
     public partial class FrmSongMgmt : Form
     {
+        int queryId = -1;
+
         public FrmSongMgmt()
         {
             InitializeComponent();
@@ -29,22 +31,43 @@ namespace prjFruitBar8000
 
         private void btnQuery_Click(object sender, EventArgs e)
         {
-            int? queryId = null;
-
             try
             {
                 queryId = int.Parse(txtIdBox.Text);
-
-                //public List<SongQueryResult> queryId(int? inputId)
                 SongQueryResult qresult = (new SongQueryService()).queryId(queryId).FirstOrDefault();
+
                 txtAlbumName.Text = qresult.AlbumName;
                 txtCreatorName.Text = qresult.ArtistNames;
                 txtSongName.Text = qresult.SongName;
             }
+            catch (FormatException fex)
+            {
+                ErrorLogger.Log(fex);
+                MessageBox.Show("請檢查輸入格式!");
+                return;
+            }
             catch (Exception ex)
             {
-                ErrorLogger.Show(ex);
+                ErrorLogger.Log(ex);
                 MessageBox.Show("發生錯誤! 請洽管理員");
+                return;
+            }
+        }
+
+        private void btnUpdateSong_Click(object sender, EventArgs e)
+        {
+            string newSongName = txtSongName.Text;
+            
+            queryId = int.Parse(txtIdBox.Text);
+            SongQueryResult qresult = (new SongQueryService()).queryId(queryId).FirstOrDefault();
+
+            if (qresult.SongName == newSongName) return;
+
+            bool isUpdateSucess = new SongUpdateService().UpdateSong(queryId, newSongName);
+            if(isUpdateSucess)
+            {
+                MessageBox.Show("資料更新成功!");
+                return;
             }
         }
     }
