@@ -76,7 +76,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="AlbumId" Type="int" Nullable="false" />
           <Property Name="SongId" Type="int" Nullable="false" />
-          <Property Name="TrackNumber" Type="int" Nullable="false" />
+          <Property Name="TrackNumber" Type="int" />
         </EntityType>
         <Association Name="FK_AlbumArtist_Albums">
           <End Role="Albums" Type="Self.Albums" Multiplicity="1" />
@@ -305,7 +305,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="AlbumId" Type="Int32" Nullable="false" />
           <Property Name="SongId" Type="Int32" Nullable="false" />
-          <Property Name="TrackNumber" Type="Int32" Nullable="false" />
+          <Property Name="TrackNumber" Type="Int32" />
           <NavigationProperty Name="Album" Relationship="Self.FK_SongsAlbums_Albums" FromRole="SongsAlbums" ToRole="Albums" />
           <NavigationProperty Name="Song" Relationship="Self.FK_SongsAlbums_Songs" FromRole="SongsAlbums" ToRole="Songs" />
         </EntityType>

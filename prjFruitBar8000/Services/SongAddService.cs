@@ -54,7 +54,7 @@ namespace prjFruitBar8000.Services
 
                 // 建立歌曲與專輯的關聯。
                 // TrackNumber 先給 999；之後若 UI 有輸入曲序，再改成使用 UI 傳入的值。
-                var songsAlbum = new SongsAlbum { Song = song, Album = album, TrackNumber = 999 };
+                var songsAlbum = new SongsAlbum { Song = song, Album = album };
 
 
                 dbContext.Songs.Add(song);
