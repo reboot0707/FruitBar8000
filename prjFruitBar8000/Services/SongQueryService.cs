@@ -10,6 +10,35 @@ namespace prjFruitBar8000.Services
 {
     public class SongQueryService
     {
+        public List<SongQueryResult> queryId(int? inputId)
+        {
+            using (FruitBarDBEntities dbcontext = new FruitBarDBEntities())
+            {
+                var query = dbcontext.SongsAlbums.Where(x => !x.Song.IsDeleted); //排除被軟刪除的資料
+                                                 
+                
+                var queryCount = query.Where(x => x.SongId == inputId).Count();
+
+                if( queryCount == 0)
+                {
+                    throw new ArgumentNullException("找不到資料");
+                }
+
+                var qRawList = query.Where(x => x.SongId == inputId)  //只查相同 Id 的樂曲資訊
+                                  .SelectMany(a => a.Song.ArtistsSongs,
+                                        (x, a) => new SongQueryRow
+                                        {
+                                            SongId = a.SongId,
+                                            SongName = a.Song.SongName,
+                                            AlbumName = x.Album.AlbumName,
+                                            ArtistNameEach = a.Artist.ArtistName
+                                        }).ToList(); // 加上 ToList() 讓它從 LINQ to Entity 查詢語句轉換成
+
+                var qParseList = buildResults(qRawList);
+                return qParseList;
+            }
+        }
+
         public List<SongQueryResult> querySongs(string inputKeyword)
         {
             using (FruitBarDBEntities dbcontext = new FruitBarDBEntities())

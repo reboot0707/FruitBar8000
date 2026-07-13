@@ -1,4 +1,5 @@
-﻿using System;
+﻿using prjFruitBar8000.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -23,6 +24,27 @@ namespace prjFruitBar8000
             if (result == DialogResult.Cancel)
             {
                 return;
+            }
+        }
+
+        private void btnQuery_Click(object sender, EventArgs e)
+        {
+            int? queryId = null;
+
+            try
+            {
+                queryId = int.Parse(txtIdBox.Text);
+
+                //public List<SongQueryResult> queryId(int? inputId)
+                SongQueryResult qresult = (new SongQueryService()).queryId(queryId).FirstOrDefault();
+                txtAlbumName.Text = qresult.AlbumName;
+                txtCreatorName.Text = qresult.ArtistNames;
+                txtSongName.Text = qresult.SongName;
+            }
+            catch (Exception ex)
+            {
+                ErrorLogger.Show(ex);
+                MessageBox.Show("發生錯誤! 請洽管理員");
             }
         }
     }
