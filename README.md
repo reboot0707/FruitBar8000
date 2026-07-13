@@ -24,4 +24,5 @@
 - 抽取底層元件、業務邏輯與資料庫架構，開發 Web 服務，預計以 API 服務為主。
 
 ## 資料表關聯圖
-![](dbscript\diagram0713-02.png)
+![](dbscript/diagram0713-02.png)
+- 圖片在專案中的路徑: `dbscript/diagram0713-02.png`
