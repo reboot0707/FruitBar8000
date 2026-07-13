@@ -120,24 +120,29 @@
           <p class="section-no">04 · QUERY DESIGN</p>
           <h2>換查詢條件，不必複製整套畫面流程</h2>
         </div>
-        <div class="query-layout">
-          <div class="query-types">
-            <span>依歌曲</span>
-            <span>依專輯</span>
-            <span>依創作者</span>
+        <div class="query-evidence">
+          <div class="query-story">
+            <div class="query-types">
+              <span>依歌曲</span>
+              <span>依專輯</span>
+              <span>依創作者</span>
+            </div>
+            <div class="query-compact-arrow">選擇查詢方法 <b>↓</b></div>
+            <div class="delegate-core">
+              <p>共同入口</p>
+              <code>CallQuery(Func&lt;string,<br>List&lt;SongQueryResult&gt;&gt;)</code>
+            </div>
+            <div class="query-compact-arrow"><b>↓</b> 統一綁定結果</div>
+            <div class="query-result">
+              <strong>歌曲 · 專輯 · 演出／製作人員</strong>
+            </div>
           </div>
-          <div class="query-arrow">選擇方法<br><b>↓</b></div>
-          <div class="delegate-core">
-            <p>共同入口</p>
-            <code>CallQuery(Func&lt;string,<br>List&lt;SongQueryResult&gt;&gt;)</code>
-          </div>
-          <div class="query-arrow"><b>↓</b><br>統一綁定</div>
-          <div class="query-result">
-            <strong>同一份結果格式</strong>
-            <span>歌曲 · 專輯 · 演出／製作人員</span>
-          </div>
+          <figure class="query-shot">
+            <img src="../pics/demo-SearchMyGO.png" alt="以創作者 MyGO 查詢歌曲的實際畫面">
+            <figcaption>實際操作：選擇「創作者」，以 MyGO 查出關聯歌曲</figcaption>
+          </figure>
         </div>
-        <p class="callout wide">把「方法」當參數：新增查詢類型時，保留共用的輸入判斷與 DataGridView 綁定。</p>
+        <p class="callout wide query-callout">把「方法」當參數：新增查詢類型時，保留共用的輸入判斷與 DataGridView 綁定。</p>
         <aside class="notes">
           約 50 秒。三種查詢最後都回傳相同的 SongQueryResult。畫面用 Func 把選到的查詢方法傳給 CallQuery，因此關鍵字整理、結果綁定與欄名設定只寫一次。
         </aside>
@@ -148,17 +153,21 @@
           <p class="section-no">05 · MAINTAINABILITY</p>
           <h2>資料安全與可遷移性，也放進第一版設計</h2>
         </div>
-        <div class="two-claims">
-          <article>
-            <div class="claim-icon">↶</div>
+        <div class="maintain-layout">
+          <div class="maintain-copy">
+            <article>
             <h3>軟刪除保留資料</h3>
             <p>刪除歌曲時設定 <code>IsDeleted = true</code>；一般查詢主動排除，降低誤刪風險。</p>
-          </article>
-          <article>
-            <div class="claim-icon">⇄</div>
+            </article>
+            <article>
             <h3>結構可重建、可移動</h3>
             <p>資料表規格與關聯同步保存在 <code>dbscript/</code>，不只存在單一資料庫環境。</p>
-          </article>
+            </article>
+          </div>
+          <figure class="dbscript-shot">
+            <img src="../pics/dbscript_screenshot.png" alt="GitHub 上的 fruitbar8000db.sql 資料庫腳本">
+            <figcaption><code>fruitbar8000db.sql</code> 隨專案版本一起追蹤</figcaption>
+          </figure>
         </div>
         <aside class="notes">
           約 40 秒。第一個是軟刪除，程式不直接移除資料列，而是標記 IsDeleted。第二個是把 SQL 腳本納入專案，讓資料庫結構可以追蹤與遷移。兩者都是為了維護性。
