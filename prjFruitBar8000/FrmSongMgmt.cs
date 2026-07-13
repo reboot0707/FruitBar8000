@@ -27,6 +27,23 @@ namespace prjFruitBar8000
             {
                 return;
             }
+
+            try
+            {
+                queryId = int.Parse(txtIdBox.Text);
+                bool isDeletedNow = (new SongDeleteService()).DeleteSong(queryId);
+                if (isDeletedNow)
+                {
+                    MessageBox.Show("資料已成功刪除!", "警告");
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorLogger.Log(ex);
+                MessageBox.Show("發生錯誤! 請洽管理員");
+                return;
+            }
         }
 
         private void btnQuery_Click(object sender, EventArgs e)
@@ -39,6 +56,12 @@ namespace prjFruitBar8000
                 txtAlbumName.Text = qresult.AlbumName;
                 txtCreatorName.Text = qresult.ArtistNames;
                 txtSongName.Text = qresult.SongName;
+            }
+            catch (ArgumentNullException aex)
+            {
+                ErrorLogger.Log(aex);
+                MessageBox.Show("查無此筆資料!");
+                return;
             }
             catch (FormatException fex)
             {
