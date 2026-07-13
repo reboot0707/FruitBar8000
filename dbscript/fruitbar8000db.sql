@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** 物件:  Database [FruitBarDB]    指令碼日期: 2026/7/12 上午 05:24:21 ******/
+/****** 物件:  Database [FruitBarDB]    指令碼日期: 2026/7/13 上午 09:18:53 ******/
 CREATE DATABASE [FruitBarDB]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -78,16 +78,18 @@ ALTER DATABASE [FruitBarDB] SET OPTIMIZED_LOCKING = OFF
 GO
 ALTER DATABASE [FruitBarDB] SET ACCELERATED_DATABASE_RECOVERY = OFF  
 GO
+EXEC sys.sp_db_vardecimal_storage_format N'FruitBarDB', N'ON'
+GO
 ALTER DATABASE [FruitBarDB] SET QUERY_STORE = ON
 GO
 ALTER DATABASE [FruitBarDB] SET QUERY_STORE (OPERATION_MODE = READ_WRITE, CLEANUP_POLICY = (STALE_QUERY_THRESHOLD_DAYS = 30), DATA_FLUSH_INTERVAL_SECONDS = 900, INTERVAL_LENGTH_MINUTES = 60, MAX_STORAGE_SIZE_MB = 1000, QUERY_CAPTURE_MODE = AUTO, SIZE_BASED_CLEANUP_MODE = AUTO, MAX_PLANS_PER_QUERY = 200, WAIT_STATS_CAPTURE_MODE = ON)
 GO
 USE [FruitBarDB]
 GO
-/****** 物件:  Schema [Fruitbar]    指令碼日期: 2026/7/12 上午 05:24:22 ******/
+/****** 物件:  Schema [Fruitbar]    指令碼日期: 2026/7/13 上午 09:18:53 ******/
 CREATE SCHEMA [Fruitbar]
 GO
-/****** 物件:  Table [Fruitbar].[AlbumArtist]    指令碼日期: 2026/7/12 上午 05:24:22 ******/
+/****** 物件:  Table [Fruitbar].[AlbumArtist]    指令碼日期: 2026/7/13 上午 09:18:53 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -108,7 +110,7 @@ CREATE TABLE [Fruitbar].[AlbumArtist](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** 物件:  Table [Fruitbar].[Albums]    指令碼日期: 2026/7/12 上午 05:24:23 ******/
+/****** 物件:  Table [Fruitbar].[Albums]    指令碼日期: 2026/7/13 上午 09:18:53 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -126,7 +128,7 @@ CREATE TABLE [Fruitbar].[Albums](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** 物件:  Table [Fruitbar].[Artists]    指令碼日期: 2026/7/12 上午 05:24:23 ******/
+/****** 物件:  Table [Fruitbar].[Artists]    指令碼日期: 2026/7/13 上午 09:18:53 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -142,7 +144,7 @@ CREATE TABLE [Fruitbar].[Artists](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** 物件:  Table [Fruitbar].[ArtistsSongs]    指令碼日期: 2026/7/12 上午 05:24:23 ******/
+/****** 物件:  Table [Fruitbar].[ArtistsSongs]    指令碼日期: 2026/7/13 上午 09:18:53 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -163,7 +165,7 @@ CREATE TABLE [Fruitbar].[ArtistsSongs](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** 物件:  Table [Fruitbar].[Genre]    指令碼日期: 2026/7/12 上午 05:24:23 ******/
+/****** 物件:  Table [Fruitbar].[Genre]    指令碼日期: 2026/7/13 上午 09:18:53 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -182,7 +184,7 @@ CREATE TABLE [Fruitbar].[Genre](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** 物件:  Table [Fruitbar].[SongGenres]    指令碼日期: 2026/7/12 上午 05:24:23 ******/
+/****** 物件:  Table [Fruitbar].[SongGenres]    指令碼日期: 2026/7/13 上午 09:18:53 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -202,7 +204,7 @@ CREATE TABLE [Fruitbar].[SongGenres](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** 物件:  Table [Fruitbar].[Songs]    指令碼日期: 2026/7/12 上午 05:24:23 ******/
+/****** 物件:  Table [Fruitbar].[Songs]    指令碼日期: 2026/7/13 上午 09:18:53 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -219,7 +221,7 @@ CREATE TABLE [Fruitbar].[Songs](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** 物件:  Table [Fruitbar].[SongsAlbums]    指令碼日期: 2026/7/12 上午 05:24:23 ******/
+/****** 物件:  Table [Fruitbar].[SongsAlbums]    指令碼日期: 2026/7/13 上午 09:18:53 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -237,11 +239,6 @@ CREATE TABLE [Fruitbar].[SongsAlbums](
 (
 	[AlbumId] ASC,
 	[SongId] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY],
- CONSTRAINT [UQ_SongsAlbums_AlbumId_TrackNumber] UNIQUE NONCLUSTERED 
-(
-	[AlbumId] ASC,
-	[TrackNumber] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
