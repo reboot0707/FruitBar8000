@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="FruitBar8000 五分鐘專案成果報告">
+  <title>FruitBar8000｜5 分鐘專案報告</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/dist/reset.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/dist/reveal.css">
+  <link rel="stylesheet" href="./fruitbar-theme.css">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section class="title-slide" data-background-color="#17130f">
+        <div class="title-grid">
+          <div>
+            <p class="eyebrow">MUSIC METADATA · WINFORMS · EF6</p>
+            <h1>FruitBar<span>8000</span></h1>
+            <p class="lead">把音樂關聯資料，整理成可維護、可擴充的查詢工具</p>
+          </div>
+          <div class="album-mark" aria-hidden="true">
+            <span class="groove groove-1"></span>
+            <span class="groove groove-2"></span>
+            <span class="groove groove-3"></span>
+            <span class="record-hole"></span>
+            <span class="record-label">FB<br>8000</span>
+          </div>
+        </div>
+        <p class="footer-note">5 分鐘專案成果報告</p>
+        <aside class="notes">
+          約 30 秒。FruitBar8000 的名字來自 Foobar2000；這次不是要做完整播放器，而是先把音樂 metadata 的資料關係與 CRUD 基礎打穩。
+        </aside>
+      </section>
+
+      <section>
+        <div class="slide-head">
+          <p class="section-no">01 · SCOPE</p>
+          <h2>先解決「資料怎麼放、功能怎麼長」</h2>
+        </div>
+        <div class="split-layout scope-layout">
+          <div>
+            <p class="big-statement">今天的範圍很明確：</p>
+            <ul class="clean-list">
+              <li><strong>建模</strong>：歌曲、專輯、創作者、曲風</li>
+              <li><strong>維護</strong>：新增、查詢、修改、軟刪除</li>
+              <li><strong>呈現</strong>：以 WinForms 完成操作介面</li>
+            </ul>
+            <p class="callout">先讓核心資料可信，才有條件延伸播放、封面與 Web API。</p>
+          </div>
+          <figure class="window-shot">
+            <img src="../pics/fruitbar_20260713125152.png" alt="FruitBar8000 WinForms 主畫面">
+            <figcaption>目前主畫面：查詢、新增與管理三個入口</figcaption>
+          </figure>
+        </div>
+        <aside class="notes">
+          約 40 秒。這一階段聚焦資料表設計、關鍵 metadata 的 CRUD，以及能操作這些功能的 WinForms。播放器、串流整合都先放到後續，避免範圍失控。
+        </aside>
+      </section>
+
+      <section>
+        <div class="slide-head">
+          <p class="section-no">02 · DATA MODEL</p>
+          <h2>多對多關聯，才裝得下真實的音樂資料</h2>
+        </div>
+        <div class="data-layout">
+          <figure class="diagram-frame">
+            <img src="../dbscript/diagram0713-02.png" alt="FruitBar8000 資料表關聯圖">
+          </figure>
+          <div class="data-copy">
+            <div class="relation-focus">
+              <span>歌曲</span><b>↔</b><span>創作者</span>
+              <small>ArtistsSongs</small>
+            </div>
+            <div class="relation-focus">
+              <span>歌曲</span><b>↔</b><span>專輯</span>
+              <small>SongsAlbums</small>
+            </div>
+            <p>一首歌可有多位創作者，也可透過中介表保留角色與曲序；資料模型不必被單一情境綁死。</p>
+          </div>
+        </div>
+        <aside class="notes">
+          約 50 秒。音樂資料不是一首歌只對一位歌手。透過 ArtistsSongs、SongsAlbums 等中介表，可以表達多位創作者、不同 credit role、同一專輯的曲序，也讓後續功能有擴充空間。
+        </aside>
+      </section>
+
+      <section>
+        <div class="slide-head">
+          <p class="section-no">03 · ARCHITECTURE</p>
+          <h2>分層的目的，是修改時不要牽一髮動全身</h2>
+        </div>
+        <div class="layer-stack" aria-label="三層式架構">
+          <div class="layer layer-ui">
+            <span class="layer-index">01</span>
+            <div><strong>UI 層</strong><small>WinForms · 事件 · 委派</small></div>
+            <p>接收操作、呈現結果</p>
+          </div>
+          <div class="flow-arrow">↓</div>
+          <div class="layer layer-service">
+            <span class="layer-index">02</span>
+            <div><strong>業務邏輯層</strong><small>Query / Add / Update / Delete Services</small></div>
+            <p>集中規則與 CRUD</p>
+          </div>
+          <div class="flow-arrow">↓</div>
+          <div class="layer layer-data">
+            <span class="layer-index">03</span>
+            <div><strong>資料層</strong><small>Entity Framework 6 · EDMX · DB First</small></div>
+            <p>用物件關聯管理資料</p>
+          </div>
+        </div>
+        <p class="bottom-line">UI 不直接承擔資料規則，服務也不綁死某一個畫面。</p>
+        <aside class="notes">
+          約 50 秒。這裡不是嚴格宣稱已完成教科書式三層架構，而是採「類三層式」維護：畫面處理互動，Service 集中 CRUD，EDMX 管理資料關係。核心價值是降低耦合。
+        </aside>
+      </section>
+
+      <section>
+        <div class="slide-head">
+          <p class="section-no">04 · QUERY DESIGN</p>
+          <h2>換查詢條件，不必複製整套畫面流程</h2>
+        </div>
+        <div class="query-layout">
+          <div class="query-types">
+            <span>依歌曲</span>
+            <span>依專輯</span>
+            <span>依創作者</span>
+          </div>
+          <div class="query-arrow">選擇方法<br><b>↓</b></div>
+          <div class="delegate-core">
+            <p>共同入口</p>
+            <code>CallQuery(Func&lt;string,<br>List&lt;SongQueryResult&gt;&gt;)</code>
+          </div>
+          <div class="query-arrow"><b>↓</b><br>統一綁定</div>
+          <div class="query-result">
+            <strong>同一份結果格式</strong>
+            <span>歌曲 · 專輯 · 演出／製作人員</span>
+          </div>
+        </div>
+        <p class="callout wide">把「方法」當參數：新增查詢類型時，保留共用的輸入判斷與 DataGridView 綁定。</p>
+        <aside class="notes">
+          約 50 秒。三種查詢最後都回傳相同的 SongQueryResult。畫面用 Func 把選到的查詢方法傳給 CallQuery，因此關鍵字整理、結果綁定與欄名設定只寫一次。
+        </aside>
+      </section>
+
+      <section>
+        <div class="slide-head">
+          <p class="section-no">05 · MAINTAINABILITY</p>
+          <h2>資料安全與可遷移性，也放進第一版設計</h2>
+        </div>
+        <div class="two-claims">
+          <article>
+            <div class="claim-icon">↶</div>
+            <h3>軟刪除保留資料</h3>
+            <p>刪除歌曲時設定 <code>IsDeleted = true</code>；一般查詢主動排除，降低誤刪風險。</p>
+          </article>
+          <article>
+            <div class="claim-icon">⇄</div>
+            <h3>結構可重建、可移動</h3>
+            <p>資料表規格與關聯同步保存在 <code>dbscript/</code>，不只存在單一資料庫環境。</p>
+          </article>
+        </div>
+        <aside class="notes">
+          約 40 秒。第一個是軟刪除，程式不直接移除資料列，而是標記 IsDeleted。第二個是把 SQL 腳本納入專案，讓資料庫結構可以追蹤與遷移。兩者都是為了維護性。
+        </aside>
+      </section>
+
+      <section class="closing-slide" data-background-color="#17130f">
+        <div class="slide-head light">
+          <p class="section-no">06 · NEXT</p>
+          <h2>從可靠的 metadata 核心，走向真正可用的音樂服務</h2>
+        </div>
+        <ol class="roadmap">
+          <li><span>01</span><strong>媒體連結</strong><small>查到歌曲後，開啟合法串流平台資訊</small></li>
+          <li><span>02</span><strong>專輯封面</strong><small>利用預留欄位，從介面維護封面</small></li>
+          <li><span>03</span><strong>資料匯入</strong><small>串接合法 metadata 來源，提升實用性</small></li>
+          <li><span>04</span><strong>Web API</strong><small>抽取元件、邏輯與資料架構，服務更多前端</small></li>
+        </ol>
+        <p class="closing-line">FruitBar8000 的第一步：不是播放更多歌，而是先把每首歌的資料關係做好。</p>
+        <aside class="notes">
+          約 40 秒。後續順序是媒體連結、專輯封面、合法 metadata 匯入，最後把既有的資料與業務邏輯抽成 Web API。收尾強調：這一版的成果是可擴充的資料核心。
+        </aside>
+      </section>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/plugin/notes/notes.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      controls: true,
+      progress: true,
+      slideNumber: 'c/t',
+      center: false,
+      transition: 'fade',
+      backgroundTransition: 'fade',
+      width: 1600,
+      height: 900,
+      margin: 0.04,
+      plugins: [RevealNotes]
+    });
+  </script>
+</body>
+</html>
